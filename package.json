@@ -1,0 +1,29 @@
+{
+  "name": "optimiseur-cartons",
+  "version": "1.0.0",
+  "description": "Une application pour optimiser l'utilisation des cartons",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "build-all": "electron-builder -wml"
+  },
+  "devDependencies": {
+    "electron": "^33.3.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.optimiseur.cartons",
+    "productName": "Optimiseur de Cartons",
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+    "target": ["dmg", "zip"], 
+    "category": "public.app-category.productivity"
+  }
+  }
+}
