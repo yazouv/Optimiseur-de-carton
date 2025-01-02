@@ -21,10 +21,7 @@
     "win": {
       "target": "nsis"
     },
-    "publish": {
-      "provider": "github",
-      "releaseType": "release"
-    },
+    "publish": "always",
     "mac": {
     "target": ["dmg", "zip"], 
     "category": "public.app-category.productivity"
