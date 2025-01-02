@@ -1,4 +1,5 @@
-name: Build macOS App
+name: Build Electron App for macOS
+
 on:
   push:
     branches:
@@ -8,15 +9,22 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      # Étape 1 : Récupérer le code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Étape 2 : Configurer Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+
+      # Étape 3 : Installer les dépendances
       - name: Install dependencies
         run: npm install
+
+      # Étape 4 : Construire l'application
       - name: Build Electron app
         run: npm run build
         env:
-          ELECTRON_CACHE: ${{ runner.temp }}/electron
-          ELECTRON_BUILDER_CACHE: ${{ runner.temp }}/electron-builder
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
