@@ -23,8 +23,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Étape 4 : Construire l'application
+      # Étape 4 : Vérifier les erreurs de configuration
+      - name: Check Electron Builder config
+        run: |
+          if ! grep -q '"publish": "always"' package.json; then
+            echo "Updating Electron Builder publish config..."
+            sed -i '' 's/"publish":.*/"publish": "always",/' package.json
+          fi
+        shell: bash
+
+      # Étape 5 : Construire l'application
       - name: Build Electron app
         run: npm run build
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      # Étape 6 : Vérifier les fichiers générés
+      - name: List artifacts
+        run: ls -R dist

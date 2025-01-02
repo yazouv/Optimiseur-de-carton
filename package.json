@@ -21,10 +21,15 @@
     "win": {
       "target": "nsis"
     },
-    "publish": "always",
     "mac": {
-    "target": ["dmg", "zip"], 
-    "category": "public.app-category.productivity"
-  }
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.productivity"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "yazouv",
+      "repo": "FiloProject",
+      "releaseType": "draft"
+    }
   }
 }
